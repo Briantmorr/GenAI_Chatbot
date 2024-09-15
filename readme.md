@@ -1,4 +1,4 @@
-# Advanced Generative Chatbot Design
+# Getting Started
 ## Overview
 This project focuses on designing and implementing an advanced generative chatbot using state-of-the-art architectures and techniques. The chatbot is capable of carrying out multi-turn conversations, adapting to context, and handling a variety of topics.
 
@@ -13,7 +13,7 @@ This project focuses on designing and implementing an advanced generative chatbo
 #### Access via Notebook
 1. Clone the repository:
 ``` 
-git clone https://github.com/your-username/advanced-generative-chatbot.git
+git clone https://github.com/briantmorr/GenAI_Chatbot.git
 ```
 
 2. Run the notebook:
