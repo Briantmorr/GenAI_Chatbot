@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .conversation-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            height: 300px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+
+        .question {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+        .answer {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .no-history {
+            text-align: center;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Ask the Chatbot!</h1>
+        
+        <!-- Form for submitting a question -->
+        <form action="/get" method="POST" id="chat-form">
+            <input type="text" name="question" id="question-input" placeholder="Enter your question" required>
+            <input type="submit" value="Ask">
+        </form>
+
+        <!-- Conversation box for displaying questions and answers -->
+        <div class="conversation-box" id="conversation-box">
+            <h2>Conversation History:</h2>
+            <div id="conversation-history">
+                {% if conversation %}
+                    {% for entry in conversation %}
+                        <div class="question">Q: {{ entry['question'] }}</div>
+                        <div class="answer">A: {{ entry['answer'] }}</div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-history">No conversation history yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
