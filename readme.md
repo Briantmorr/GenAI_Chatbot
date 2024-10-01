@@ -1,3 +1,24 @@
+#  Comment by Prema Mallikarjunan 9/30/2024
+Created a new folder "WebInterface" for the frontend.
+-  app.py file was added for generating a response, and returns the answer on the same page.
+-  a separate template file "Index.html" was created to ask a question and answer and the conversation history.
+-  used 'Flask" library for running this web interface.
+
+-  EDA 4
+  - loaded both datasets train-v1.1.json and dev-v1.1.json into Python using json.load().
+  - Extracting Contexts: Contexts (passages of text) are extracted from both datasets and stored in a list called contexts.
+  - Combining Contexts: The contexts from both datasets are combined into one list, allowing the chatbot to use both train and dev contexts.
+  - Find Best Context (Simplified): Currently, the script selects the first context for simplicity, but this can be improved using keyword matching or semantic similarity.
+  - Running the Chatbot: The chatbot takes a user’s question, finds a context, and returns an answer using Hugging Face's transformers library.
+  - Finally, created many visuals:
+  -     1. Distribution of Context Lengths
+        2. Distribution of Question Lengths
+        3. Distribution of Answer Lengths
+        4. Distribution of Answer Start Positions in Context
+        5. Comparison of Context Lengths and Answer Lengths (Scatter Plot)
+        6. Word Cloud of Contexts
+        7. Most Common First Words in Questions
+
 #  Comment by Prema Mallikarjunan 9/20/2024
 #  EDA 1 
   -   EDA1 uses the dev-v1.1.json file. 
