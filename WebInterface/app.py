@@ -1,5 +1,3 @@
-
-
 from flask import Flask, render_template, request
 from transformers import pipeline
 import json
@@ -12,6 +10,7 @@ train_file_path = 'C:/USD/Natural Language Processing and GenAI AAI 520/Final Pr
 with open(train_file_path, "r") as train_file:
     train_data = json.load(train_file)
 
+# Extract contexts from the dataset
 contexts = []
 for article in train_data['data']:
     for paragraph in article['paragraphs']:
@@ -23,11 +22,9 @@ qa_pipeline = pipeline("question-answering", model="distilbert-base-cased-distil
 # Initialize an empty conversation history
 conversation_history = []
 
-# Function to find the best matching context based on question
+# Function to find the best matching context based on the question
 def find_best_context(question, contexts):
-    # Simple keyword search to find the context with the most matching words
     question_keywords = set(question.lower().split())  # Split the question into keywords
-
     best_context = None
     max_overlap = 0
 
@@ -60,16 +57,26 @@ def chatbot_response():
     # Find the best context dynamically based on the question
     best_context = find_best_context(user_question, contexts)
 
-    # Get the answer from the model using the best-matching context
-    result = qa_pipeline(question=user_question, context=best_context)
+    # Log the selected context for debugging
+    print(f"Selected context: '{best_context[:100]}...'")  # Show the first 100 characters of the context
 
-    # Add the question and answer to the conversation history
-    conversation_history.append({"question": user_question, "answer": result['answer']})
+    # Get the answer from the model using the best-matching context
+    try:
+        result = qa_pipeline(question=user_question, context=best_context)
+        print(f"Model response: '{result['answer']}'")  # Log the answer returned by the model
+
+        # Add the question and answer to the conversation history
+        conversation_history.append({"question": user_question, "answer": result['answer']})
+
+    except Exception as e:
+        print(f"Error during model inference: {str(e)}")
+        return "Error: Unable to get a response from the model."
+
+    # Log the updated conversation history
+    print(f"Updated conversation history: {conversation_history}")
 
     # Return the updated conversation history to the template
     return render_template('index.html', conversation=conversation_history)
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
-   

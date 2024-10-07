@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
         body {
@@ -21,8 +22,8 @@
             margin-top: 50px;
             background-color: white;
             padding: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
         h1 {
@@ -64,25 +65,60 @@
             border: 1px solid #ccc;
             padding: 15px;
             margin-top: 20px;
-            height: 300px;
+            height: 400px;
             overflow-y: auto;
             background-color: #f9f9f9;
+            border-radius: 5px;
         }
 
         .question {
             font-weight: bold;
             margin-bottom: 5px;
             color: #007bff;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #e0f7fa; /* Light blue background for questions */
         }
 
         .answer {
             margin-bottom: 20px;
             color: #333;
+            background-color: #e8f5e9; /* Light green background for answers */
+            border-radius: 5px;
+            padding: 10px; /* Padding for better spacing */
         }
 
         .no-history {
             text-align: center;
             color: #888;
+        }
+
+        /* Loading Spinner */
+        #loading {
+            display: none; /* Hidden by default */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Feedback buttons */
+        #feedback {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #feedback button {
+            margin: 0 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #feedback button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
         }
     </style>
 </head>
@@ -96,6 +132,9 @@
             <input type="text" name="question" id="question-input" placeholder="Enter your question" required>
             <input type="submit" value="Ask">
         </form>
+
+        <!-- Loading indicator -->
+        <div id="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
 
         <!-- Conversation box for displaying questions and answers -->
         <div class="conversation-box" id="conversation-box">
@@ -111,6 +150,37 @@
                 {% endif %}
             </div>
         </div>
+
+        <!-- Feedback buttons -->
+        <div id="feedback">
+            <button onclick="giveFeedback(true)"><i class="fas fa-thumbs-up"></i> Good</button>
+            <button onclick="giveFeedback(false)"><i class="fas fa-thumbs-down"></i> Bad</button>
+        </div>
     </div>
+
+    <script>
+        const form = document.getElementById('chat-form');
+        const loadingIndicator = document.getElementById('loading');
+        const conversationBox = document.getElementById('conversation-box');
+
+        form.onsubmit = function() {
+            // Show loading indicator
+            loadingIndicator.style.display = 'block';
+        };
+
+        // Function to give feedback on responses
+        function giveFeedback(isGood) {
+            const feedbackMessage = isGood ? "Thank you for your feedback!" : "We're sorry to hear that!";
+            alert(feedbackMessage); // Replace with better UX
+        }
+
+        // Auto scroll to the bottom of the conversation box
+        function scrollToBottom() {
+            conversationBox.scrollTop = conversationBox.scrollHeight;
+        }
+
+        // Call the scroll function initially to show the most recent messages
+        scrollToBottom();
+    </script>
 </body>
 </html>
