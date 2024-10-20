@@ -1,3 +1,48 @@
+#  Comment by Prema Mallikarjunan 10/20/2024
+Chatbot UI Instructions
+Prerequisites
+Before running the chatbot UI, ensure that you have the following installed:
+•	Python 3.x
+•	Required Python packages (see requirements.txt for a complete list)
+You can install the necessary packages using the following command:
+pip install -r requirements.txt
+1. Clone the Repository
+Clone this repository to your local machine using the following command:
+git clone <repository-url>
+2. Navigate to the Project Directory
+Change your directory to the project folder:
+cd <project-directory>
+3. Prepare Your Dataset
+•	Make sure you have the training data file (e.g., train-v1.1.json) located in the same directory as the app.py file. This file should contain the data formatted in JSON, with questions and contexts.
+4. Run the Notebook
+Open your Jupyter Notebook or Google Colab.
+•	If using Google Colab, upload your files (like train-v1.1.json, index.html, and app.py) to the Colab environment.
+•	Ensure you set the paths correctly in your app.py file for loading the index.html.
+5. Execute the Code
+Run the following code in a notebook cell to start the Flask app:
+python
+!python app.py
+6. Access the Chatbot UI
+Once the Flask server is running, you will see output similar to this:
+ * Running on http://127.0.0.1:5000
+If you are running in Google Colab, you will also see a ngrok link that you can use to access the chatbot UI from your browser:
+ * ngrok tunnel "NgrokTunnel: "https://<your-ngrok-link>" -> "http://localhost:5000"
+Click on the provided ngrok link to open the chatbot UI in your web browser.
+7. Interact with the Chatbot
+In the chatbot UI, you can type your questions related to the content in your dataset and get responses. The chatbot will utilize the fine-tuned model to provide answers based on the context provided in your training data.
+8. Stopping the Server
+To stop the server, you can interrupt the execution of the cell running the Flask app (e.g., by pressing Ctrl + C in a terminal or stopping the execution in Colab).
+
+
+
+
+
+
+
+
+
+
+
 #  Comment by Prema Mallikarjunan 9/30/2024
 Created a new folder "WebInterface" for the frontend.
 -  app.py file was added for generating a response, and returns the answer on the same page.
