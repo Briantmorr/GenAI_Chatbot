@@ -1,4 +1,31 @@
-#  Comment by Prema Mallikarjunan 10/20/2024
+# AAI-520 Training a GenAI chatbot on the SQuAD dataset
+
+# Getting Started
+## Overview
+This project focuses on designing and implementing an advanced generative chatbot using state-of-the-art architectures and techniques. The chatbot is capable of carrying out multi-turn conversations, adapting to context, and handling a variety of topics.
+
+## Project Goal
+- Objective: Build a generative chatbot that can engage in coherent and context-aware conversations with users.
+- Output: A working chatbot accessible via a Jupyter Notebook and a web interface.
+
+## Dataset
+- Stanford Question Answering Dataset (SQuAD): A comprehensive dataset consisting of questions posed by crowdworkers on a set of Wikipedia articles, paired with the corresponding answers in the text.
+
+
+### Access via Notebook
+1. Clone the repository:
+``` 
+git clone https://github.com/briantmorr/GenAI_Chatbot.git
+```
+2. Download the [models](https://drive.google.com/drive/folders/1-hUXWhZVmMLR8R6D1Tuo0nZScbsciKE3?usp=drive_link) folder and place it in the root directory.
+
+3. From there you can directly ask questions to the model with question_answering_example.ipynb
+
+4. Alternatively you can do a more detailed evaluation at evaluate_model.ipynb, whether its getting the total accuracy, seeing various evaluation methods, or running single evaluation with rerun_single_prediction.
+
+---
+## Setting up the UI 
+###  Comment by Prema Mallikarjunan 10/20/2024
 Chatbot UI Instructions
 Prerequisites
 Before running the chatbot UI, ensure that you have the following installed:
@@ -32,18 +59,7 @@ Click on the provided ngrok link to open the chatbot UI in your web browser.
 In the chatbot UI, you can type your questions related to the content in your dataset and get responses. The chatbot will utilize the fine-tuned model to provide answers based on the context provided in your training data.
 8. Stopping the Server
 To stop the server, you can interrupt the execution of the cell running the Flask app (e.g., by pressing Ctrl + C in a terminal or stopping the execution in Colab).
-
-
-
-
-
-
-
-
-
-
-
-#  Comment by Prema Mallikarjunan 9/30/2024
+### Comment by Prema Mallikarjunan 9/30/2024
 Created a new folder "WebInterface" for the frontend.
 -  app.py file was added for generating a response, and returns the answer on the same page.
 -  a separate template file "Index.html" was created to ask a question and answer and the conversation history.
@@ -63,9 +79,8 @@ Created a new folder "WebInterface" for the frontend.
         5. Comparison of Context Lengths and Answer Lengths (Scatter Plot)
         6. Word Cloud of Contexts
         7. Most Common First Words in Questions
-
-#  Comment by Prema Mallikarjunan 9/20/2024
-#  EDA 1 
+### Comment by Prema Mallikarjunan 9/20/2024
+###  EDA 1 
   -   EDA1 uses the dev-v1.1.json file. 
   -   Load the Data: I'll parse the JSON structure and convert it into a pandas DataFrame to explore the different elements.
   -   Initial Inspection: We'll examine the basic structure of the dataset, such as the titles, contexts, questions, and answers.
@@ -80,7 +95,7 @@ Missing Values Check: Verify if there are any missing or null values.
 
 For visualizing the length distributions of context, questions, and answers, use matplotlib library.  The code also display the summary statistics for context length, question length, and answer length, as well as checking for missing values in your DataFrame.
 
-#  EDA 2
+##  EDA 2
 #  Example Python script to Build the QA Chatbot Using SQuAD
 
   -  The pre-trained BERT model for question-answering using the "pipeline" library.
@@ -88,27 +103,3 @@ For visualizing the length distributions of context, questions, and answers, use
   -  Context: You provide a text passage (context) from which the chatbot will search for answers.
   -  User Input: The chatbot takes user questions in a loop and returns the answer using the QA model.
   -  Exit Condition: The loop breaks when the user types "exit".
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##
-
-# Getting Started
-## Overview
-This project focuses on designing and implementing an advanced generative chatbot using state-of-the-art architectures and techniques. The chatbot is capable of carrying out multi-turn conversations, adapting to context, and handling a variety of topics.
-
-## Project Goal
-- Objective: Build a generative chatbot that can engage in coherent and context-aware conversations with users.
-- Output: A working chatbot accessible via a Jupyter Notebook and a web interface.
-
-## Dataset
-- Stanford Question Answering Dataset (SQuAD): A comprehensive dataset consisting of questions posed by crowdworkers on a set of Wikipedia articles, paired with the corresponding answers in the text.
-
-## How to Use the Chatbot
-#### Access via Notebook
-1. Clone the repository:
-``` 
-git clone https://github.com/briantmorr/GenAI_Chatbot.git
-```
-
-2. Run the notebook:
-```
-jupyter notebook chatbot.ipynb
-```
